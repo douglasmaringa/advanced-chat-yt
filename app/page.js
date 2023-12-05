@@ -20,9 +20,7 @@ function page() {
         const docRef = doc(firestore, 'users', user.uid);
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
-            //get data plus id 
             const data = ({ id: docSnap.id, ...docSnap.data() })
-           
             setUser(data);
         } else {
           console.log('No such document!');
@@ -35,7 +33,7 @@ function page() {
     return () => unsubscribe();
   }, [auth, router]); 
 
-  //console.log(user);
+ 
   return (
     <div className="flex h-screen">
       {/* Left side users */}
