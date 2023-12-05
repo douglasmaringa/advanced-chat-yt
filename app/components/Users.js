@@ -111,7 +111,7 @@ const logoutClick = () => {
 
   return (
     <div className='shadow-lg h-screen overflow-auto mt-4 mb-20'>
-      <div className="flex justify-between p-4">
+      <div className="flex flex-col lg:flex-row justify-between p-4 space-y-4 lg:space-y-0">
         <button
           className={`btn btn-outline ${activeTab === 'users' ? 'btn-primary' : ''}`}
           onClick={() => handleTabClick('users')}

@@ -36,7 +36,7 @@ function MessageCard({ message, me, other }) {
           message.image && <img src={message.image} className='max-h-60 w-60 mb-4' />
         }
         <p>{message.content}</p>
-        <div className='text-xs text-gray-300'>{formatTimeAgo(message.time)}</div>
+        <div className='text-xs text-gray-200'>{formatTimeAgo(message.time)}</div>
       </div>
     </div>
   );

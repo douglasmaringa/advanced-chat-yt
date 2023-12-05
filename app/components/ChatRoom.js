@@ -55,7 +55,6 @@ useEffect(() => {
       content: message,
       time: serverTimestamp(),
       image: image,
-      audio: "",
     };
 
     await addDoc(messagesCollection, newMessage);
@@ -63,7 +62,7 @@ useEffect(() => {
     setImage('');
     //send to chatroom by chatroom id and update last message
     const chatroomRef = doc(firestore, 'chatrooms', chatRoomId);
-    await updateDoc(chatroomRef, { lastMessage: message ? message : "File Attachment" });
+    await updateDoc(chatroomRef, { lastMessage: message ? message : "Image" });
 
     // Clear the input field after sending the message
     
