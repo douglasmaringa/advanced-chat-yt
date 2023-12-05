@@ -35,7 +35,7 @@ function page() {
   //console.log(user);
   return (
     <div className="flex h-screen">
-      {/* Left side user */}
+      {/* Left side users */}
       <div className="flex-shrink-0 w-3/12">
         <Users user={user} />
       </div>
