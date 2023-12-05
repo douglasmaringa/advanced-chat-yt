@@ -12,6 +12,7 @@ function ChatRoom({ user ,selectedChatroom}) {
   const [message, setMessage] = useState([]);
   const [messages, setMessages] = useState([]);
   const messagesContainerRef = useRef(null);
+  const [image, setImage] = useState(null);
 
   useEffect(() => {
     // Scroll to the bottom when messages change
@@ -42,7 +43,7 @@ useEffect(() => {
  const sendMessage = async () => {
     const messagesCollection = collection(firestore, 'messages');
     // Check if the message is not empty
-  if (message.trim() === '') {
+  if (message == '' && image == '') {
     return;
   }
 
@@ -53,17 +54,16 @@ useEffect(() => {
       sender: me.id,
       content: message,
       time: serverTimestamp(),
-      image: "",
+      image: image,
       audio: "",
-      messageType:"text"
-      
     };
 
     await addDoc(messagesCollection, newMessage);
     setMessage('');
+    setImage('');
     //send to chatroom by chatroom id and update last message
     const chatroomRef = doc(firestore, 'chatrooms', chatRoomId);
-    await updateDoc(chatroomRef, { lastMessage: message });
+    await updateDoc(chatroomRef, { lastMessage: message ? message : "File Attachment" });
 
     // Clear the input field after sending the message
     
@@ -89,7 +89,7 @@ useEffect(() => {
       </div>
 
       {/* Input box at the bottom */}
-      <MessageInput sendMessage={sendMessage} message={message} setMessage={setMessage}/>
+      <MessageInput sendMessage={sendMessage} message={message} setMessage={setMessage} image={image} setImage={setImage}/>
     </div>
   );
 }

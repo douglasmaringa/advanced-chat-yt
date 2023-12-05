@@ -32,6 +32,9 @@ function MessageCard({ message, me, other }) {
 
       {/* Message bubble on the right or left based on the sender */}
       <div className={` text-white p-2 rounded-md ${isMessageFromMe ? 'bg-blue-500 self-end' : 'bg-[#19D39E] self-start'}`}>
+        {
+          message.image && <img src={message.image} className='max-h-60 w-60 mb-4' />
+        }
         <p>{message.content}</p>
         <div className='text-xs text-gray-300'>{formatTimeAgo(message.time)}</div>
       </div>
