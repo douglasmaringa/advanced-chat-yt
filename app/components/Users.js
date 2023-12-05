@@ -177,7 +177,6 @@ const logoutClick = () => {
                   name={user.name}
                   avatarUrl={user.avatarUrl}
                   latestMessage={""}
-                  time={""}
                   type={"user"}
                 />
                  }
